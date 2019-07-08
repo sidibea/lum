@@ -1,0 +1,11 @@
+{% for key, val in media %}
+    <div class=" category-image-slide relative full-width">
+        <div class="clearfix effect-hover-zoom overfollow-hidden img-categorys-slide center-vertical-image relative">
+            <img class="animate-default" src="{{ val.path }}" alt="Image Shore" />
+            <a href="#"></a>
+        </div>
+        <a href="#">
+            <p class="uppercase bold">{{ val.name }}</p>
+        </a>
+    </div>
+{% endfor %}

@@ -1,0 +1,118 @@
+{% extends '@SyliusShop/layout.html.twig' %}
+{% block style %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('shop/css/home.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div class="relative clearfix full-width">
+        <!-- Menu & Slide -->
+        <div class="clearfix container-web relative">
+            <div class=" container relative">
+                <div class="row">
+                    <div class=" relative menu-slide col-lg-12 clear-padding bottom-margin-15-default">
+                        <!-- Menu -->
+                        <div class=" menu-web relative menu-bg-white border no-border-t">
+                            {{ render(url('sylius_shop_partial_taxon_index_by_code', {'code': 'category', 'template': '@SyliusShop/Taxon/_horizontalMenu.html.twig'})) }}
+
+                        </div>
+                        <!-- Slide -->
+                        <div class="clearfix slide-box-home slide-v3 relative top-margin-15-default left-margin-15-default">
+                            {{ render(path('bitbag_sylius_cms_plugin_shop_media_index_by_section_code', {'sectionCode' : 'slider', 'template' : '@SyliusShop/_slider.html.twig'})) }}
+
+                        </div>
+                        <div class="category-image top-margin-15-default left-margin-15-default float-left border">
+                            <div class="owl-carousel owl-theme">
+                                {{ render(path('bitbag_sylius_cms_plugin_shop_media_index_by_section_code', {'sectionCode' : 'category_image_slide', 'template' : '@SyliusShop/category_slide.html.twig'})) }}
+
+
+                            </div>
+                        </div>
+                        <div class="clearfix box-banner-small-v3 top-margin-15-default left-margin-15-default box-banner-small">
+                            {{ render(path('bitbag_sylius_cms_plugin_shop_media_index_by_section_code', {'sectionCode' : 'banner_slide', 'template' : '@SyliusShop/_banner_slide.html.twig'})) }}
+                        </div>
+                    </div>
+                    <!-- End Menu & Slide -->
+                </div>
+            </div>
+        </div>
+        <!-- Box Banner Percent 3 -->
+        <div class=" banner-percent-3 container-web">
+            <div class=" container">
+                <div class="row">
+                    <div class="banner-pecent-3-top bottom-margin-15-default display-table">
+
+                        <div class="effect-bubba zoom-image-hover overfollow-hidden float-left relative right-margin-15-default ">
+                            <img src="{{ asset('shop/img/lot.jpg') }}" class="" alt="Banner Percent" />
+                            <a href="#"></a>
+                        </div>
+                        <div class="effect-bubba zoom-image-hover overfollow-hidden float-left relative">
+                            <img src="{{ asset('shop/img/lip.jpg') }}" class="" alt="Banner Percent" />
+                            <a href="#"></a>
+                        </div>
+                        <div class="effect-bubba zoom-image-hover overfollow-hidden float-left relative left-margin-15-default">
+                            <img src="{{ asset('shop/img/rice.jpg') }}" class="" alt="Banner Percent" />
+                            <a href="#"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Banner Percent 3 -->
+
+
+        <!-- Product Category Percent 2 -->
+        <div class=" full-width category-percent-two bottom-margin-default">
+            <div class="clearfix container-web">
+                <div class=" container">
+                    <div class="row">
+                        <div class=" clearfix content-left col-md-6 col-sm-6">
+                            <!-- Title Product -->
+                            <div class="clearfix title-box full-width border">
+                                <div class="clearfix name-title-box title-category title-gold-bg relative">
+                                    <p>{{ 'sylius.front.fruits'|trans }}</p>
+                                </div>
+                                <div class="clearfix menu-title-box">
+                                    <p class="view-all-product-category title-hover-red"><a href="#" class="animate-default">{{ 'sylius.front.view_all'|trans }}</a></p>
+                                </div>
+                            </div>
+                            <div class=" banner-percent-product zoom-image-hover overfollow-hidden effect-oscar relative">
+                                <img src="{{ asset('shop/img/fruits.jpg') }}" class="max-width" alt="Image . . ." />
+                                <a href="#"></a>
+                            </div>
+                            <!-- Content Product Box -->
+                            <div class="clearfix product-percent-content border-collapsed-box full-width">
+                                {{ render(url('app_shop_partial_product_index_latest_by_taxon_code', { 'count': 6, 'code': 'fruit_vegetales', 'template': '@SyliusShop/Product/_horizontalListM.html.twig'})) }}
+                            </div>
+
+
+                        </div>
+                        <div class=" clearfix content-right col-md-6 col-sm-6">
+                            <!-- Title Product -->
+                            <div class="clearfix title-box full-width border">
+                                <div class="clearfix name-title-box title-category title-violet-bg relative">
+                                    <img src="{{ asset('shop/img/icon_health.png') }}" alt="Icon Health & Beauty" class="absolute" />
+                                    <p>{{ 'sylius.front.bakery'|trans }}</p>
+                                </div>
+                                <div class="clearfix menu-title-box">
+                                    <p class="view-all-product-category title-hover-red"><a href="#" class="animate-default">{{ 'sylius.front.view_all'|trans }}</a></p>
+                                </div>
+                            </div>
+                            <div class=" banner-percent-product zoom-image-hover overfollow-hidden effect-oscar relative">
+                                <img src="{{ asset('shop/img/banner_p_2_1.png') }}" class="max-width" alt="Image . . ." />
+                                <a href="#"></a>
+                            </div>
+                            <!-- Content Product Box -->
+                            <div class="clearfix product-percent-content border-collapsed-box full-width">
+                                {{ render(url('app_shop_partial_product_index_latest_by_taxon_code', { 'count': 6, 'code': 'bakery', 'template': '@SyliusShop/Product/_horizontalListM.html.twig'})) }}
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}

@@ -1,0 +1,7 @@
+Odiseo\SyliusVendorPlugin\Model\Product:
+    type: mappedSuperclass
+    table: sylius_product
+    manyToMany:
+        vendors:
+            targetEntity: Odiseo\SyliusVendorPlugin\Model\VendorInterface
+            mappedBy: products

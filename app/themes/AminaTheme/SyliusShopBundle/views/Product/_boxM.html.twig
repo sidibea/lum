@@ -1,0 +1,18 @@
+{% import "@SyliusShop/Common/Macro/money.html.twig" as money %}
+
+{{ sonata_block_render_event('sylius.shop.product.index.before_box', {'product': product}) }}
+
+<div class="clearfix relative product-no-ranking border-collapsed-element percent-content-3">
+    <div class="effect-hover-zoom center-vertical-image">
+        {% include '@SyliusShop/Product/_mainImage.html.twig' with {'product': product, 'width': '190px'} %}
+        <a href="{{ path('sylius_shop_product_show', {'slug': product.slug, '_locale': product.translation.locale}) }}"></a>
+    </div>
+    <div class="clearfix  name-product-no-ranking">
+        <p class="title-product clearfix full-width title-hover-black"><a href="{{ path('sylius_shop_product_show', {'slug': product.slug, '_locale': product.translation.locale}) }}">{{ product.name }}</a></p>
+        {% if not product.variants.empty() %}
+            <p class="clearfix price-product">{{  money.calculatePrice(product|sylius_resolve_variant) }}</p>
+        {% endif %}
+    </div>
+</div>
+
+{{ sonata_block_render_event('sylius.shop.product.index.after_box', {'product': product}) }}

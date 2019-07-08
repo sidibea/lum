@@ -1,0 +1,27 @@
+# This file is part of the Sylius package.
+# (c) Paweł Jędrzejewski
+
+sylius:
+    front:
+        all_categories: 'Toutes les categories'
+        call_us: 'Appellez nous: '
+        search: 'Rechercher'
+        home: 'Accueil'
+        properties: 'Immobilier'
+        events: 'Evenements'
+        foods: 'Restaurants'
+        travel: 'Voyage'
+        enter_keyword: 'Entrez votre mot clé ici ...'
+        fruits: 'Fruits Et Légumes'
+        bakery: 'Boulangerie'
+        women: 'Femmes'
+        view_all: 'voir tout'
+    menu:
+        shop:
+            account:
+                address_book: 'Carnet d’adresses'
+                change_password: 'Changer votre mot de passe'
+                dashboard: 'Tableau de bord'
+                header: 'Votre compte'
+                order_history: 'Historique des commandes'
+                personal_information: 'Informations personnelles'

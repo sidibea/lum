@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="{{ app.request.locale|slice(0, 2) }}">
+<head>
+    <title>{% block title %}Lumoo{% endblock %}</title>
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    {% block metatags %}
+    {% endblock %}
+
+    {% block stylesheets %}
+
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat%7CRoboto:100,300,400,500,700,900%7CRoboto+Condensed:100,300,400,500,700" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{{ asset('shop/css/icon-font-linea.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('shop/css/multirange.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('shop/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('shop/css/bootstrap-theme.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('shop/css/themify-icons.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('shop/css/style.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('shop/css/effect.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('shop/css/slick.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('shop/css/slick-theme.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('shop/css/font-awesome.min.css') }}">
+        {% block style %}
+            <link rel="stylesheet" type="text/css" href="{{ asset('shop/css/home.css') }}">
+        {% endblock %}
+        <link rel="stylesheet" type="text/css" href="{{ asset('shop/css/category.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('shop/css/owl.theme.default.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('shop/css/owl.carousel.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('shop/css/responsive.css') }}">
+        {% include '@SyliusUi/_stylesheets.html.twig' with {'path': 'assets/shop/css/style.css'} %}
+
+
+        {{ sonata_block_render_event('sylius.shop.layout.stylesheets') }}
+    {% endblock %}
+
+
+</head>
+<body>
+    <div class="pushmenu menu-home5">
+        <div class="menu-push">
+        <span class="close-left js-close"><i class="fa fa-times f-20"></i></span>
+        <div class="clearfix"></div>
+        <form role="search" method="get" id="searchform" class="searchform" action="/search">
+            <div>
+                <label class="screen-reader-text" for="q"></label>
+                <input type="text" placeholder="{{ 'sylius.front.enter_keyword'|trans }}" value="" name="q" id="q" autocomplete="off">
+                <input type="hidden" name="type" value="product">
+                <button type="submit" id="searchsubmit"><i class="ion-ios-search-strong"></i></button>
+            </div>
+        </form>
+        <ul class="nav-home5 js-menubar">
+            <li class="level1 active ">
+                <a href="#">{{ 'sylius.front.home'|trans }}</a>
+            </li>
+            <li class="level1 active "><a href="#">{{ 'sylius.front.properties'|trans }}</a>
+            </li>
+            <li class="level1">
+                <a href="#">{{ 'sylius.front.events'|trans }}</a>
+            </li>
+            <li class="level1">
+                <a href="#">{{ 'sylius.front.travel'|trans }}</a>
+
+            </li>
+        </ul>
+    </div>
+    </div>
+    <!-- Menu Mobile -->
+    <div class="menu-mobile-left-content menu-bg-white">
+        <ul>
+            {{ render(url('sylius_shop_partial_taxon_index_by_code', {'code': 'category', 'template': '@SyliusShop/Taxon/_horizontalMenu.html.twig'})) }}
+        </ul>
+    </div>
+    <div class="wrappage">
+        <header class="relative full-width">
+            <div class=" container-web relative">
+                <div class=" container">
+                    <div class="row">
+                        <div class=" header-top">
+                            <p class="contact_us_header col-md-4 col-xs-12 col-sm-3 clear-margin">
+                                <img src="{{ asset('shop/img/icon_phone_top.png') }} " alt="Icon Phone Top Header" /> {{ 'sylius.front.call_us'|trans }} <span class="text-red bold">(223) 51 26 57 57</span>
+                            </p>
+                            {{ sonata_block_render_event('sylius.shop.layout.before_currency_switcher') }}
+
+
+                            <div class="menu-header-top text-right col-md-8 col-xs-12 col-sm-6 clear-padding">
+                                {{ sonata_block_render_event('sylius.shop.layout.before_security_widget') }}
+                                <ul class="clear-margin">
+                                    {{ render(controller('sylius.controller.shop.security_widget:renderAction')) }}
+                                    {{ sonata_block_render_event('sylius.shop.layout.after_security_widget') }}
+
+
+
+                                    {{ render(controller('sylius.controller.shop.locale_switch:renderAction')) }}
+
+
+                                    {{ sonata_block_render_event('sylius.shop.layout.before_currency_switcher') }}
+                                    {{ render(controller('sylius.controller.shop.currency_switch:renderAction')) }}
+
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    {% block header %}
+                        <header>
+                            {% include '@SyliusShop/_header.html.twig' %}
+
+                            {{ sonata_block_render_event('sylius.shop.layout.after_header') }}
+
+                        </header>
+                    {% endblock %}
+                    <div class="row">
+                        <a class="menu-vertical hidden-md hidden-lg" onclick="showMenuMobie()">
+                            <span class="animate-default"><i class="fa fa-list" aria-hidden="true"></i> {{ 'sylius.front.all_categories'|trans }}</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-header-v3 hidden-ipx">
+                <div class="container">
+                    <div class="row">
+                        <!-- Menu Page -->
+                        <div class="menu-header full-width">
+                            <ul class="clear-margin">
+                                <li onclick="showMenuHomeV3()"><a class="animate-default" href="#"><i class="fa fa-list" aria-hidden="true"></i> {{ 'sylius.front.all_categories'|trans }}</a></li>
+
+
+                            </ul>
+                        </div>
+                        <!-- End Menu Page -->
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix menu_more_header menu-web menu-bg-white">
+                <ul>
+                    {{ render(url('sylius_shop_partial_taxon_index_by_code', {'code': 'category', 'template': '@SyliusShop/Taxon/_horizontalMenu.html.twig'})) }}
+                </ul>
+            </div>
+            <div class="header-ontop">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="clearfix logo">
+                                <a href="#"><img alt="Logo" src="{{ asset('shop/img/logo.png') }}" /></a>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="menu-header">
+                                <ul class="main__menu clear-margin">
+                                    <li class="title-hover-red">
+                                        <a class="animate-default" href="#">{{ 'sylius.front.home'|trans }}</a>
+                                    </li>
+                                    <li class="title-hover-red">
+                                        <a class="animate-default" href="#">{{ 'sylius.front.foods'|trans }}</a>
+                                    </li>
+                                    <li class="title-hover-red">
+                                        <a class="animate-default" href="#">{{ 'sylius.front.properties'|trans }}</a>
+                                    </li>
+                                    <li class="title-hover-red">
+                                        <a class="animate-default" href="#">{{ 'sylius.front.events'|trans }}</a>
+                                    </li>
+                                    <li class="title-hover-red">
+                                        <a class="animate-default" href="#">{{ 'sylius.front.travel'|trans }}</a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        {% block content %}
+        {% endblock %}
+
+        <footer class=" bg-gray full-width border no-border-r no-border-l footer-v3 no-border-b">
+            <div class="clearfix container-web relative">
+                <div class=" container clear-padding">
+                    <div class="row">
+                        {{ render(path('bitbag_sylius_cms_plugin_shop_media_index_by_section_code', {'sectionCode' : 'support_box_info ', 'template' : '@SyliusShop/_supportbox.html.twig'})) }}
+
+
+                    </div>
+                    <div class="row">
+                        <div class="clearfix col-md-3 col-sm-6 col-xs-12 text-footer">
+                            <p>mon compte</p>
+                            <ul class="list-footer">
+                                <li><a href="{{ path('sylius_shop_account_dashboard') }}">Mon compte</a></li>
+                                <li><a href="{{ path('sylius_shop_login') }}">Login</a></li>
+                                <li><a href="{{ path('sylius_shop_cart_summary') }}">Mon panier</a></li>
+                                <li><a href="#">Comparer</a></li>
+                            </ul>
+                        </div>
+                        <div class="clearfix col-md-3 col-sm-6 col-xs-12 text-footer">
+                            <p>information</p>
+                            <ul class="list-footer">
+                                <li><a href="#">Information</a></li>
+                                <li><a href="#">Historique de commande</a></li>
+                                <li><a href="#">Politique de confidentialite</a></li>
+                                <li><a href="#">Site Map</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="clearfix col-md-6 col-sm-6 col-xs-12 text-footer">
+                            <p>contactez-nous</p>
+                            <ul class="icon-footer">
+                                <li><i class="fa fa-home" aria-hidden="true"></i> Badalabougou SEMA Rue: 101 Porte: 202</li>
+                                <li><i class="fa fa-envelope" aria-hidden="true"></i> contact@lumoo.ml</li>
+                                <li><i class="fa fa-phone" aria-hidden="true"></i> </li>
+                                <li><i class="fa fa-fax" aria-hidden="true"></i>223 75 65 71 77</li>
+                                <li><i class="fa fa-clock-o" aria-hidden="true"></i> 08:00 - 18:00 </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Box Social -->
+            <div class=" top-footer full-width">
+                <div class="clearfix container-web relative">
+                    <div class=" container">
+                        <div class="row">
+                            <div class="clearfix col-md-9 col-sm-12 clear-padding col-xs-12">
+
+                            </div>
+                            <div class="clearfix col-md-3 col-sm-12 col-xs-12 clear-padding social-box text-right">
+                                <a href="#"><img src="{{ asset('shop/img/social_tw-min.png') }}" alt="Icon Social Twiter"></a>
+                                <a href="#"><img src="{{ asset('shop/img/social_fa-min.png') }}" alt="Icon Social Facebook"></a>
+                                <a href="#"><img src="{{ asset('shop/img/social_int-min.png') }}" alt="Icon Social Instagram"></a>
+                                <a href="#"><img src="{{ asset('shop/img/social_yt-min.png') }}" alt="Icon Social Youtube" /></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Box Social -->
+            <div class=" bottom-footer full-width">
+                <div class="clearfix container-web">
+                    <div class=" container">
+                        <div class="row">
+                            <div class="clearfix col-md-7 clear-padding copyright">
+                                <p>Copyright © 2018 by InfoSys. All Rights Reserved.</p>
+                            </div>
+                            <div class="clearfix footer-icon-bottom col-md-5 float-right clear-padding">
+                                <div class="icon_logo_footer float-right">
+                                    <img src="{{ asset('shop/img/image_payment_footer-min.png') }}" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+
+    </div>
+
+
+
+{% block javascripts %}
+    <script src="{{ asset('shop/js/jquery-3.3.1.min.js') }}" defer=""></script>
+    <script src="{{ asset('shop/js/bootstrap.min.js') }}" defer=""></script>
+    <script src="{{ asset('shop/js/multirange.js') }}" defer=""></script>
+    <script src="{{ asset('shop/js/slick.min.js') }}" defer=""></script>
+    <script src="{{ asset('shop/js/owl.carousel.min.js') }}" defer=""></script>
+    <script src="{{ asset('shop/js/scripts.js') }}" defer=""></script>
+    {% include '@SyliusUi/_javascripts.html.twig' with {'path': 'assets/shop/js/app.js'} %}
+
+    {{ sonata_block_render_event('sylius.shop.layout.javascripts') }}
+{% endblock %}
+
+</body>
+</html>
+

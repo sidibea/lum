@@ -1,0 +1,37 @@
+<div class="row">
+    <div class="clearfix header-content full-width relative">
+        <div class="clearfix icon-menu-bar">
+            <i class="data-icon data-icon-arrows icon-arrows-hamburger-2 icon-pushmenu js-push-menu"></i>
+        </div>
+        <div class="clearfix logo">
+            <a href="#"><img alt="Logo" src="{{ asset('shop/img/logo.png') }}" /></a>
+        </div>
+        <div class="clearfix search-box relative float-left">
+            <form method="GET" action="/" class="">
+                <div class="clearfix category-box relative">
+                    <select name="cate_search">
+                        <option>All Category</option>
+                        <option>Food</option>
+                        <option>Mobile & Tablet</option>
+                        <option>Electric Appliances</option>
+                        <option>Electronics & Technology</option>
+                        <option>Fashion</option>
+                        <option>Health & Beauty</option>
+                        <option>Mother & Baby</option>
+                        <option>Books & Stationery</option>
+                        <option>Home & Life</option>
+                        <option>Sports & Outdoors</option>
+                        <option>Auto & Moto</option>
+                        <option>Voucher Service</option>
+                    </select>
+                </div>
+                <input type="text" name="s" placeholder="{{ 'sylius.front.enter_keywords'|trans }}">
+                <button type="submit" class="animate-default button-hover-red">{{ 'sylius.front.search'|trans }}</button>
+            </form>
+        </div>
+        {{ render(url('sylius_shop_partial_cart_summary', {'template': '@SyliusShop/Cart/_widget.html.twig'})) }}
+        <div class="mask-search absolute clearfix" onclick="hiddenBoxSearchMobile()"></div>
+        <div class="clearfix box-search-mobile">
+        </div>
+    </div>
+</div>

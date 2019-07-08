@@ -1,0 +1,7 @@
+<ul>
+    {% for key, val in blocks %}
+        <li><a href="javascript:;" onclick="showBoxCateHomeByID({{ val.content }})">{{ val.name }}</a></li>
+
+    {% endfor %}
+    <li><a href="javascript:;" onclick="showBoxCateHomeByID('#drinks','.box-food-content')">Drinks</a></li>
+</ul>

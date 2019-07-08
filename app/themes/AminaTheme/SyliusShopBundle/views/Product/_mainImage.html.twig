@@ -1,0 +1,14 @@
+{% if product.imagesByType('thumbnail') is not empty %}
+    {% set path = product.imagesByType('thumbnail').first.path|imagine_filter(filter|default('sylius_shop_product_thumbnail')) %}
+{% elseif product.images.first %}
+    {% set path = product.images.first.path|imagine_filter(filter|default('sylius_shop_product_thumbnail')) %}
+{% else %}
+    {% set path = '//placehold.it/200x200' %}
+{% endif %}
+
+{% if width is defined %}
+    <img src="{{ path }}" alt="{{ product.name }}" style="width: {{ width }} !important; height: {{ width }} !important;" class="" />
+{% else %}
+    <img src="{{ path }}" alt="{{ product.name }}" class="ui bordered image" />
+
+{% endif %}

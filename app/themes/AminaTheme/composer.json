@@ -1,0 +1,14 @@
+{
+  "name": "sylius/amina-theme",
+  "authors": [
+    {
+      "name": "Amina",
+      "email": "contact@sylius.com"
+    }
+  ],
+  "extra": {
+    "sylius-theme": {
+      "title": "Amina Theme Skeleton"
+    }
+  }
+}

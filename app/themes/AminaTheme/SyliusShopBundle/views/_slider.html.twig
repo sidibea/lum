@@ -1,0 +1,6 @@
+<div class="clearfix slide-home owl-carousel owl-theme">
+    {% for key, val in media %}
+        <div class="item"><a href="#"><img src="{{ val.path }}" alt="{{ val.name }}"></a></div>
+
+    {% endfor %}
+</div>

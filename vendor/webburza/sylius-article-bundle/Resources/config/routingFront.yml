@@ -1,0 +1,21 @@
+# ------------------------------------------------------------------------------
+#  FRONTEND
+# ------------------------------------------------------------------------------
+
+webburza_article_frontend_index:
+    path: /
+    methods: [GET]
+    defaults:
+        _controller: webburza_article.controller.article:indexFrontAction
+
+webburza_article_frontend_show:
+    path: /{slug}/
+    methods: [GET]
+    defaults:
+        _controller: webburza_article.controller.article:showFrontAction
+
+webburza_article_frontend_index_by_category:
+    path: /category/{categorySlug}/
+    methods: [GET]
+    defaults:
+        _controller: webburza_article.controller.article:indexFrontAction
